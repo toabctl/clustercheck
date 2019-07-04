@@ -2,7 +2,6 @@
 
 import argparse
 from contextlib import contextmanager
-from importlib import import_module
 import os
 from twisted.web import server, resource
 from twisted.internet import reactor, task
@@ -184,7 +183,7 @@ def main():
     watchdog_usec = os.getenv('WATCHDOG_USEC')
     if watchdog_usec:
         logger.info('systemd watchdog support enabled')
-        watchdog_sec = int(watchdog_usec)/1000000/2.0
+        watchdog_sec = int(watchdog_usec) / 1000000 / 2.0
         watchdog_call = task.LoopingCall(_systemd_watchdog_ping, notifier)
         watchdog_call.start(watchdog_sec)
         logger.info('systemd watchdog looping call every {} s'.format(
