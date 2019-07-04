@@ -80,9 +80,9 @@ def _prepare_request_response_headers(request, cache_ttl):
     # cache information
     request.setHeader("X-Cache-TTL", "%d" % cache_ttl)
     if cache_ttl <= 0:
-        request.setHeader("X-Cache", False)
+        request.setHeader("X-Cache", "%s" % False)
     else:
-        request.setHeader("X-Cache", True)
+        request.setHeader("X-Cache", "%s" % True)
 
 
 def _systemd_watchdog_ping(notifier):
